@@ -1,13 +1,61 @@
-/*µº∫Ω¿∏*/
-.lt_nav{
-    margin-top: 10px;
-    padding: 0 10px;
+/* ÂØºËà™ */
+.ct_nav{
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
 }
-.lt_nav a{
-    float: left;
-    width: 33.3333%;
+.ct_nav a{
+  width: 33.3333%;
+  float: left;
+  display: block;
 }
-.lt_nav a img{
-    width: 100%;
-    display: block;
+.ct_nav a img {
+  display: block;
+  width: 100%;
+}
+
+/* ÂïÜÂìÅ */
+.ct_product {
+  width: 100%;
+  padding: 0 10px;
+}
+.ct_product .pro_item {
+  width: 48%;
+  float: left;
+  margin-top: 10px;
+}
+.ct_product .pro_item:nth-child(2n){
+  margin-left: 4%;
+}
+.ct_product .pro_item .pro_item_box{
+  width: 100%;
+  min-height: 200px;
+  box-shadow: 0 0 3px #ddd;
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+}
+.pro_item_box img {
+  width: 100%;
+  display: block;
+}
+
+.pro_item_box p:first-of-type {
+  padding: 0 10px;
+}
+.pro_item_box p:last-of-type {
+  text-align: center;
+}
+.pro_item_box .newPrice{
+  font-size: 12px;
+  color: red;
+}
+.pro_item_box .oldPrice{
+  font-size: 12px;
+  color: #ccc;
+  text-decoration: line-through;
+}
+.pro_item_box button{
+  color: #fff;
+  background: #006699;
 }

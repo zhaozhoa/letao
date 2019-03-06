@@ -1,62 +1,64 @@
-.lt_cateLeft{
-    width: 90px;
-    height: 100%;
-    overflow: hidden;
-    float: left;
+/* 一级分类 */
+.cate_left {
+  width: 90px;
+  height: 100%;
+  overflow: hidden;
+  float: left;
 }
-.lt_cateLeft ul{
-    width: 100%;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.cate_left ul {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.lt_cateLeft ul li {
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    border-bottom: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    background: #f3f4f5;
+.cate_left ul li {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #f3f4f5;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
-.lt_cateLeft ul li:last-child{
-    border-bottom: none;
+.cate_left ul li a{
+  display: block;
+  color: #000;
+  font-size: 14px; 
 }
-.lt_cateLeft ul li a{
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    color: #666;
+.cate_left ul li.now{
+  background: #fff;
+  border-right: none;
 }
-.lt_cateLeft ul li.now{
-    background: #fff;
-    border-right-color: #fff;
+.cate_left ul li.now a{
+  color: orangered;
 }
 
-.lt_cateRight{
-    height: 100%;
-    overflow: hidden;
+/* 二级分类 */
+.cate_right{
+  overflow: hidden;
+  padding: 0 10px;
 }
-.lt_cateRight ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.cate_right ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
 }
-.lt_cateRight ul li{
-    width: 33.3333%;
-    float: left;
+.cate_right ul li{
+  width: 33.3333%;
+  float: left;
+  padding-top: 10px;
 }
-.lt_cateRight ul li a{
-    display: block;
-    width: 100%;
+.cate_right ul li a {
+  width: 100%;
+  display: block;
 }
-.lt_cateRight ul li a img{
-    display: block;
-    width: 62px;
-    height: 62px;
-    margin: 0 auto;
+.cate_right ul li a img {
+  display: block;
+  width: 100%;
 }
-.lt_cateRight ul li a p{
-    text-align: center;
-    padding: 5px 0;
+.cate_right ul li a p {
+  text-align: center;
+  color: #666;
 }
