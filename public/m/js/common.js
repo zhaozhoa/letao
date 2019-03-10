@@ -1,4 +1,7 @@
 window.CT = {}
+/**
+ * 获取url传递的参数
+ */
 CT.getParamsByUrl = function () {
   var params = {}
   var search = location.search
@@ -8,13 +11,31 @@ CT.getParamsByUrl = function () {
     arr.forEach(function (item, i) {
       var itemArr = item.split('=')
       params[itemArr[0]] = itemArr[1]
-      console.log(itemArr[0], itemArr[1]);
     })
   }
   return params;
 }
 
-// 需要登陆的 ajax 请求
+/**
+ * 字符串转对象
+ */
+CT.serializeToObject = function (serializeStr) {  
+  if (serializeStr) {
+    var obj = {}
+    var arr = serializeStr.split('&')
+    arr.forEach(function (item) {  
+      var itemArr = item.split('=')
+      obj[itemArr[0]] = itemArr[1]
+    })
+  }
+  return obj
+}
+
+
+
+ /**
+  * 需要登陆的 ajax 请求
+  */
 CT.loginUrl = '/m/user/login.html'
 CT.cartUrl = '/m/user/cart.html'
 CT.loginAjax = function (params) {  
