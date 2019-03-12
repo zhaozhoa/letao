@@ -1,5 +1,12 @@
 window.CT = {}
 /**
+ * 全局变量
+ */
+CT.loginUrl = '/m/user/login.html'
+CT.cartUrl = '/m/user/cart.html'
+CT.userUrl = '/m/user/index.html'
+
+/**
  * 获取url传递的参数
  */
 CT.getParamsByUrl = function () {
@@ -36,8 +43,6 @@ CT.serializeToObject = function (serializeStr) {
  /**
   * 需要登陆的 ajax 请求
   */
-CT.loginUrl = '/m/user/login.html'
-CT.cartUrl = '/m/user/cart.html'
 CT.loginAjax = function (params) {  
   $.ajax({
     type: params.type || get,
