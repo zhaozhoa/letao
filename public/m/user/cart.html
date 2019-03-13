@@ -62,9 +62,8 @@
 
   <script type="text/template" id="cart">
     <% for (var i = 0; i < data.length; i++) { %>
-
       <li data-product="1" class="mui-table-view-cell mui-transitioning">
-        <div class="mui-slider-right mui-disabled ">
+        <div class="mui-slider-right mui-disabled " data-id = "<%= data[i].id %>">
           <a class="mui-btn mui-btn-blue mui-icon mui-icon-compose" style="transform: translate(0px, 0px);"></a>
           <a class="mui-btn mui-btn-red mui-icon mui-icon-trash" style="transform: translate(-90px, 0px);"></a>
         </div>
@@ -76,7 +75,7 @@
               <p class="info">
                 <span class="price"><%= data[i].price %></span>
                 <span class="oldPrice"><%= data[i].oldPrice %></span>
-                <span class="number">x <%= data[i].productNum %></span>
+                <span class="number">x <%= data[i].num %></span>
               </p>
               <p><span class="size">鞋码：<%= data[i].size %></span></p>
             </div>
@@ -86,6 +85,22 @@
       </li>
     <% } %>
   </script>
+
+  <script type="text/template" id="edit">
+    <div class="cart_update">
+      <div class="p_size">
+        尺码：
+        <% var itemArr = productSize.split('-') 
+        for(var i = itemArr[0]; i<= itemArr[1]; i++) { %>
+          <span class="btn_size <%=i==size ? 'now' : '' %>"><%= i  %></span>
+        <% } %>
+      </div>
+      <div class="p_number">
+        数量：<span class="jian">-</span><input readonly="" type="text" value="<%=num%>" data-max="<%= productNum %>"><span class="jia">+</span>
+      </div>
+    </div>
+  </script>
+
 
 
   <script src="../assets/mui/js/mui.min.js"></script>
