@@ -64,3 +64,15 @@ CT.loginAjax = function (params) {
     }
   });
 }
+/**
+ * 获取列表 id
+ */
+CT.getItemId = function (arr, id) {  
+  var obj = null
+  arr.forEach(function (item , i) {  
+    if (item.id == id) {
+      obj = item
+    }
+  })
+  return obj;
+}
