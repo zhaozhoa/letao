@@ -30,7 +30,9 @@ $(function () {
   // 编辑商品
   $('.mui-table-view').on('tap', '.mui-icon-compose', function () {
     var id = $(this).parent().attr('data-id')
-    var item = CT.getItemId(window.cartDate.data, id)
+    var item = CT.getItemId(window.cartData.data, id)
+    console.log(item);
+    
     
     var html = template('edit', item)
     // mui 再解析字符串内容时，\n 会转换成<br>
@@ -52,36 +54,13 @@ $(function () {
             if (data.success == true) {
               item.num = num
               item.size = size
-               $('.mui-table-view').html(template('cart', window.cartDate))
+               $('.mui-table-view').html(template('cart', window.cartData))
             }
           }
         })
       } else {}
     })
   })
-
-   // 删除商品
-   $('.mui-table-view').on('tap', '.mui-icon-trash', function () {
-     var $this = $(this)
-     mui.confirm('您是否确认删除此件商品', '温馨提示', ['是', '否'], function (e) {
-       var id = $this.parent().attr('data-id')
-       if (e.index == 0) {
-         CT.loginAjax({
-           type: 'get',
-           url: '/cart/deleteCart',
-           data: {
-             id: id
-           },
-           dataType: 'josn',
-           success: function (data) {
-             if (data.success == true) {
-               $this.parent().parent().reomve()
-             }
-           }
-         })
-       } else {}
-     })
-   })
   $('body').on('tap','.btn_size', function () {
     $(this).addClass('now').siblings().removeClass('now')
   })
@@ -110,9 +89,43 @@ $(function () {
     }
     $input.val(curNum)
   })
+
+   // 删除商品
+   $('.mui-table-view').on('tap', '.mui-icon-trash', function () {
+     var $this = $(this)
+     mui.confirm('您是否确认删除此件商品', '温馨提示', ['是', '否'], function (e) {
+       var id = $this.parent().attr('data-id')
+       
+       if (e.index == 0) {
+         CT.loginAjax({
+           type: 'get',
+           url: '/cart/deleteCart',
+           data: {
+             id: id
+            },
+            dataType: 'json',
+            success: function (data) {
+              console.log(data);
+              if (data.success == true) {
+                $this.parent().parent().remove()
+             }
+           }
+         })
+       } else {}
+     })
+   })
+
+  //  计算金额
+  $('.mui-table-view').on('change', '[type=checkbox]', function () {  
+    setAmount()
+  })
 })
 
-
+/**
+ * 
+ * @param {function} callback 
+ * 获取购物车数据
+ */
 var getCateData = function (callback) {  
   CT.loginAjax ({
     type: 'get',
@@ -123,8 +136,35 @@ var getCateData = function (callback) {
     },
     dataType: 'json',
     success: function (data) {  
-      window.cartDate = data
+      window.cartData = data
       callback && callback(data)
     }
   })
+}
+
+/**
+ * 
+ */
+var setAmount = function  () {
+    
+  /* 所有选中的复选框 */
+  var $checkedBox = $('[type=checkbox]:checked');
+  var amountSum = 0;
+  $checkedBox.each(function (i,item) {  
+    var id = $(this).attr('data-id')
+    console.log($(this));
+    
+    var item = CT.getItemId(window.cartData.data, id)
+    
+    var num = item.num
+    var price = item.price
+    var amount = num * price
+    amountSum += amount
+  })
+
+  amountSum = Math.floor(amountSum * 100) / 100
+  $('#cartAmount').html(amountSum)
+
+
+
 }
