@@ -143,7 +143,7 @@ var getCateData = function (callback) {
 }
 
 /**
- * 
+ * 商品结算
  */
 var setAmount = function  () {
     
