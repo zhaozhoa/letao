@@ -76,4 +76,43 @@ var barCharts = function  () {
 var pieCharts = function  () {
   var box = document.querySelector('.picTable:last-child')
   var myCharts = echarts.init(box)
+  option = {
+    title: {
+      text: '热门品牌销售',
+      subtext: '2019年1月',
+      x: 'center'
+    },
+    tooltip: {
+      trigger: 'item',
+      formatter: "{b} : {c} ({d}%)"
+    },
+    legend: {
+      orient: 'vertical',
+      left: 'left',
+      data: ['李宁', '阿迪', '耐克', '匡威', '回力']
+    },
+    series: [
+      {
+        name: '占比',
+        type: 'pie',
+        radius: '55%',
+        center: ['50%', '60%'],
+        data: [
+          { value: 335, name: '李宁' },
+          { value: 310, name: '阿迪' },
+          { value: 234, name: '耐克' },
+          { value: 135, name: '匡威' },
+          { value: 1548, name: '回力' }
+        ],
+        itemStyle: {
+          emphasis: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }
+    ]
+  };
+  myCharts.setOption(option)
 }
